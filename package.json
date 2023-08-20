@@ -1,0 +1,23 @@
+{
+  "name": "mangopay-task",
+  "version": "1.0.0",
+  "description": "Mangopay task",
+  "main": "cypress.config.js",
+  "dependencies": {
+    "cypress": "^12.17.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DMCU/Mangopay-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DMCU/Mangopay-task/issues"
+  },
+  "homepage": "https://github.com/DMCU/Mangopay-task#readme"
+}
