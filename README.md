@@ -9,19 +9,14 @@ This repository contains automated tests for Google Maps search and directions f
 
 ## Test Cases Covered
 * Should display correct headline text for Paris search
- Search for Paris and verify the correct headline text.
 
 * Should display correct headline text for London search and directions.
- Search for London, click "Directions," and verify the correct headline text and destination field.
 
 * Should show error message for invalid search
- Search for an invalid place name and verify the displayed error message.
 
 * Should clear the search input after clicking "Close" button
- Search for a place, click "Close," and verify that the search input is cleared.
 
 * Should handle clicking "Directions" without a destination
- Click "Directions" without entering a destination and verify that the start and destination fields are visible and empty.
 
 ## Instalation 
 To set up and run the tests locally, follow these steps:
