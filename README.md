@@ -7,7 +7,7 @@ This repository contains automated tests for Google Maps search and directions f
 * Installation
 * Running the Tests
 
-# Test Cases Covered
+## Test Cases Covered
 * Should display correct headline text for Paris search
  Search for Paris and verify the correct headline text.
 
