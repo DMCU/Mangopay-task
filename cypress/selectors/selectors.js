@@ -6,6 +6,7 @@ export const gmapSearchSelector = {
     directionButtonSelector: 'button[data-value="Directions"]',
     startDestinationFieldSelector: '#sb_ifc50 > input', 
     destinationFieldSelector: '#sb_ifc51 > input',
+    suggestedRouteSelector: '#section-directions-trip-0',
     errorMessageSelector:  '.Q2vNVc',
     searchBoxCloseButtonSelector: 'button[aria-label="Close"]',
     directionButtonBlankSearchSelector: 'button#hArJGc'

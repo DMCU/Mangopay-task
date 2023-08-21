@@ -1,27 +1,29 @@
 # Google Maps Search and Directions Tests
 ## Summary
-This repository contains automated tests for Google Maps search and directions functionality using Cypress. It was made on recruitment process purposes of MANGOPAY company. The tests cover various scenarios related to search, directions, and error handling. Additionaly I've created test suit in iPhone X viewer which can be used in order to verify if covered testing areas are responsive. 
+This repository contains automated tests for Google Maps search and directions functionality using Cypress. It was created for the purpose of the recruitment process at MANGOPAY company. The tests cover various scenarios related to search, directions, and error handling. The Page Object Pattern was not implemented for this task. Given the relatively small scope of these tests, using the Page Object Pattern might have been overkill. However, for larger and more complex test suites, implementing the Page Object Pattern can enhance test maintainability and organization. For more convenient maintenance, all selectors are stored in the separate file `selectors.js`.
 
 ## Table of Contents
+* Responsive testing
 * Test cases covered
 * Installation
 * Running the Tests
 
-# Test Cases Covered
-* Should display correct headline text for Paris search
- Search for Paris and verify the correct headline text.
+## Responsive Testing
 
-* Should display correct headline text for London search and directions.
- Search for London, click "Directions," and verify the correct headline text and destination field.
+In this repository, you can find two test suites: `mapsSearch.cy.js` for the default viewport, and the `iPhoneXmapsSearch.cy.js` suite, which has been designed to be responsive. The `cy.viewport()` command is used to set the viewport to the size of an iPhone X, ensuring that the tests are validated for smaller screen sizes as well.
 
-* Should show error message for invalid search
- Search for an invalid place name and verify the displayed error message.
+## Test Cases Covered
+1. Should display correct headline text for Paris search
+2. Should display dirrections from Paris to London
+3. Should show error message for invalid search
+4. Should clear the search input after clicking "Close" button
+5. Should handle clicking "Directions" without a destination
 
-* Should clear the search input after clicking "Close" button
- Search for a place, click "Close," and verify that the search input is cleared.
+The test cases `1.` and `2.` cover the user stories provided in the description of this task. 
 
-* Should handle clicking "Directions" without a destination
- Click "Directions" without entering a destination and verify that the start and destination fields are visible and empty.
+It's worth noting that test case `2.` additionally covers setting directions between two destinations. I encountered a Google Maps issue here - when `London` is provided in the search input and the Directions button is selected, the value in the destination input is set to `London, UK`, which causes a problem with the assertion since it's not equal to `London`.
+
+In test case `3.`, I've covered a negative scenario. In test case `4.`, we check whether the search input gets cleared after using the corresponding button. In test case `5.`, we examine the edge case of how the input behaves when we perform a search without providing any data.
 
 ## Instalation 
 To set up and run the tests locally, follow these steps:

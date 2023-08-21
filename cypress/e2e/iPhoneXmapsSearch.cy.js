@@ -1,23 +1,20 @@
 import { gmapSearchSelector } from "../selectors/selectors";
 
 describe('Google Maps Search and Directions Tests', () => {
-// test data
   const town1 = 'Paris';
   const town2 = 'London';
-  const invalidTown = 'InvalidPlaceName';
+  const invalidTown = 'afwwfasdfasdfasdf';
   const errorMessage = 'Google Maps can\'t find';
 
   beforeEach(() => {
     cy.viewport('iphone-x')
     cy.visit('/maps?hl=en', {
       onBeforeLoad(win) {
-        // Set the navigator language to English
         Object.defineProperty(win.navigator, 'language', { value: 'en' });
         Object.defineProperty(win.navigator, 'languages', { value: ['en'] });
         Object.defineProperty(win.navigator, 'accept_languages', { value: ['en'] });
       },
       headers: {
-        // Set the Accept-Language header to 'en'
         "Accept-Language": "en-US,en;q=0.9"
       }
     })
@@ -32,17 +29,18 @@ describe('Google Maps Search and Directions Tests', () => {
     cy.get(gmapSearchSelector.headlineSelector).should('have.text', town1);
   });
 
-  it('Should display correct headline text for London search and directions', () => {
+  it('Should display dirrections from Paris to London', () => {
     cy.get(gmapSearchSelector.searchBoxInputSelector).type(town2);
     cy.get(gmapSearchSelector.searchBoxSearchButtonSelector).click();
     cy.get(gmapSearchSelector.headlineSelector).should('have.text', town2);
     cy.get(gmapSearchSelector.directionButtonSelector).click({force: true});
-    cy.get(gmapSearchSelector.destinationFieldSelector).should('have.value',town2); // ne moze najty tekstu w inputi. Czom?
+    cy.get(gmapSearchSelector.startDestinationFieldSelector).type(`${town1}{enter}`);
+    cy.get(gmapSearchSelector.suggestedRouteSelector).should('be.visible');
   });
 
   it('Should show error message for invalid search', () => {
     cy.get(gmapSearchSelector.searchBoxInputSelector).type(invalidTown);
-    cy.get(gmapSearchSelector.searchBoxSearchButtonSelector).click();
+    cy.get(gmapSearchSelector.searchBoxSearchButtonSelector).click({force: true});
     cy.get(gmapSearchSelector.errorMessageSelector).should('have.text', `${errorMessage} ${invalidTown}`);
   });
   
